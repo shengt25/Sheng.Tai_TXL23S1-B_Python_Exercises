@@ -1,6 +1,6 @@
-num1 = float(input("What is the first integer?\n"))
-num2 = float(input("\nWhat is the second integer?\n"))
-num3 = float(input("\nWhat is the third integer?\n"))
+num1 = float(input("Enter the first integer: "))
+num2 = float(input("Enter the second integer: "))
+num3 = float(input("Enter the third integer: "))
 
 num_sum = num1 + num2 + num3
 num_product = num1 * num2 * num3

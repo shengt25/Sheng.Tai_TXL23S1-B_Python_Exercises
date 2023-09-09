@@ -2,7 +2,7 @@ import random
 
 count_inside_circle = 0
 
-total_number = int(input("Enter the total number:"))
+total_number = int(input("Enter the total number of random points: "))
 
 i = 1
 while i <= total_number:

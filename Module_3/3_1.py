@@ -1,4 +1,4 @@
-length = float(input("Enter the size in centimeters:\n"))
+length = float(input("Enter the size in centimeters: "))
 
 if length < 42:
     print(f"This zander is too short, {42 - length} cm below the size limit.")

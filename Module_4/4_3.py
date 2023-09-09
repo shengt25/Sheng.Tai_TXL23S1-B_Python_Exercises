@@ -1,10 +1,10 @@
 num_list = []
 
-print("Enter the numbers, enter empty value to end inputting.")
+print("Enter the numbers, enter empty value to end inputting:")
 
 # 1. Enter numbers
 while True:
-    str1 = input("Numbers:\n")
+    str1 = input()
     if str1 == '':
         break
     else:
@@ -13,7 +13,7 @@ while True:
 # 2. Compare
 num_list_len = len(num_list)
 if num_list_len == 0:
-    print("No value entered, exiting.")
+    print("No number entered, exiting.")
 else:
     value_min = num_list[0]
     value_max = num_list[0]

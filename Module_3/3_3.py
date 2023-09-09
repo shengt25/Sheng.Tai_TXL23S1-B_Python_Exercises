@@ -1,9 +1,9 @@
-gender = input("Enter your biological gender (male / female):\n")
+gender = input("Enter your biological gender (male / female): ")
 
 if gender != "male" and gender != "female":
     print("Invalid biological gender.")
 else:
-    hemoglobin = float(input("\nEnter your hemoglobin value (g/l):\n"))
+    hemoglobin = float(input("Enter your hemoglobin value (g/l): "))
     hemoglobin_level = ""
 
     if gender == "female":
