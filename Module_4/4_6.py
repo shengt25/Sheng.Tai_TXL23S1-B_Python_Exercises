@@ -23,10 +23,6 @@ def pi_approx(total_number):
     return pi
 
 
-def pi_approx_mp_runner(sub_total_number, queue):
-    queue.put(prob_in_circle(sub_total_number))
-
-
 # Multi processing
 def pi_approx_mp(total_number):
     count_inside_circle = 0
@@ -50,9 +46,13 @@ def pi_approx_mp(total_number):
     return pi
 
 
+def pi_approx_mp_runner(sub_total_number, queue):
+    queue.put(prob_in_circle(sub_total_number))
+
+
 if __name__ == '__main__':
     total_number = int(input("Enter the total number of random points: "))
-    method = int(input("Select: 1.Single processing, 2.Mutil processing: "))
+    method = int(input("Select: 1.Single processing, 2.Multi processing: "))
     if method == 1:
         time0 = time.time()
         pi = pi_approx(total_number)
@@ -60,6 +60,6 @@ if __name__ == '__main__':
     elif method == 2:
         time0 = time.time()
         pi = pi_approx_mp(total_number)
-        print(f"Approximation of pi: {pi}, finished in {time.time() - time0}s, mutil processing")
+        print(f"Approximation of pi: {pi}, finished in {time.time() - time0}s, multi processing")
     else:
         print("Invalid method.")
