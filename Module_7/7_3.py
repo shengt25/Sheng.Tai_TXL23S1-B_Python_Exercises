@@ -1,19 +1,16 @@
-def confirm_add(airport_dict, icao):
+def add_airport(airport_dict, icao):
     if icao not in airport_dict.keys():
-        return True
+        airport_name = input("Enter the name of airport: ")
+        airport_dict[icao] = airport_name
     else:
         overwrite = input("ICAO already exist, do you want to overwrite? (y/n): ")
         if overwrite == "y":
-            return True
+            airport_name = input("Enter the name of airport: ")
+            airport_dict[icao] = airport_name
         elif overwrite == "n":
             print("Skipped.")
         else:
             print("Invalid option, skipped.")
-    return False
-
-
-def add_airport(airport_dict, icao, airport_name):
-    airport_dict[icao] = airport_name
 
 
 def fetch_airport(airport_dict, icao):
@@ -32,9 +29,7 @@ if __name__ == "__main__":
 
         if option == "1":
             icao = input("Enter the ICAO: ")
-            if confirm_add(airport_dict_1, icao) == True:
-                airport_name = input("Enter the name of airport: ")
-                add_airport(airport_dict_1, icao, airport_name)
+            add_airport(airport_dict_1, icao)
 
         elif option == "2":
             icao = input("Enter the ICAO: ")
