@@ -25,6 +25,7 @@ for i in range(1, 11):
     cars.append(Car(f"ABC-{i}", max_speed))
 hour = 0
 
+end_loop = False
 while True:
     hour += 1
     for car in cars:
@@ -32,24 +33,16 @@ while True:
         car.accelerate(speed_change)
         car.drive(1)
 
-    travelled_distance = []
     for car in cars:
-        travelled_distance.append(car.travelled_distance)
+        # If any car has travelled more than 10000 km, stop immediately
+        if car.travelled_distance >= 10000:
+            end_loop = True
 
-    travelled_distance = sorted(travelled_distance, reverse=True)
-
-    first_place = travelled_distance[0]
-    second_place = travelled_distance[1]
-    if first_place - second_place >= 10000:
+    if end_loop:
         break
 
+print(f"Time passed: {hour} hours")
 print(f"{'Registration number':<30}{'Max speed':<30}{'Current Speed':<30}{'Travelled distance'}")
 for car in cars:
     print(f"{car.registration_number:<30}{car.max_speed:<30}{car.current_speed:<30}{car.travelled_distance}")
 
-cars_order = sorted(cars, key=lambda car: car.travelled_distance, reverse=True)
-print("\n")
-print(f"Time passed: {hour} hours")
-print(f"The first place is {cars_order[0].registration_number} with {cars_order[0].travelled_distance} km")
-print(f"The second place is {cars_order[1].registration_number} with {cars_order[1].travelled_distance} km")
-print(f"The difference is {cars_order[0].travelled_distance - cars_order[1].travelled_distance} km")
