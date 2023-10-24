@@ -55,6 +55,7 @@ for i in range(1, 11):
 race = Race("Grand Demolition Derby", 8000, cars)
 
 
+print(f"Race {race.name} started!")
 # Race loop
 while True:
     # Drive for one hour
@@ -69,7 +70,7 @@ while True:
     if race.race_finished():
         # Print final status and exit loop
         print(f"\nRace finished at {race.hour} hours!")
-        print("Final results:")
+        print(f"Final results of {race.name}:")
         race.print_status()
         break
 
