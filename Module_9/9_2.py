@@ -13,17 +13,24 @@ class Car:
             self.current_speed = 0
 
 
+# Creating my car
 my_car = Car("ABC-123", 142)
+
+# Printing the properties of my car
 print("The properties of my car:")
 print(f"Registration number: {my_car.registration_number}")
 print(f"Max speed: {my_car.max_speed} km/h")
 print(f"Current speed: {my_car.current_speed} km/h")
 print(f"Travelled distance: {my_car.travelled_distance} km")
+
+# Accelerating the car
 print("\n")
 print("Accelerating the car:")
 my_car.accelerate(30)
 my_car.accelerate(70)
 my_car.accelerate(50)
 print(f"Current speed: {my_car.current_speed} km/h")
+
+# Emergency brake
 my_car.accelerate(-200)
 print(f"Current speed: {my_car.current_speed} km/h")

@@ -19,30 +19,34 @@ class Car:
         self.travelled_distance += self.current_speed * hours
 
 
+# Creating the cars
 cars = []
 for i in range(1, 11):
     max_speed = random.randint(100, 200)
     cars.append(Car(f"ABC-{i}", max_speed))
-hour = 0
 
+# Cars driving loop
+hour = 0
 end_loop = False
 while True:
+    # Drive for one hour
     hour += 1
     for car in cars:
         speed_change = random.randint(-10, 15)
         car.accelerate(speed_change)
         car.drive(1)
 
+    # Check if any car has travelled more than 10000 km
     for car in cars:
-        # If any car has travelled more than 10000 km, stop immediately
         if car.travelled_distance >= 10000:
             end_loop = True
 
+    # Break the loop if flag is set
     if end_loop:
         break
 
+# Print the results
 print(f"Time passed: {hour} hours")
 print(f"{'Registration number':<30}{'Max speed':<30}{'Current Speed':<30}{'Travelled distance'}")
 for car in cars:
     print(f"{car.registration_number:<30}{car.max_speed:<30}{car.current_speed:<30}{car.travelled_distance}")
-

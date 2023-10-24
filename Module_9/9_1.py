@@ -6,8 +6,10 @@ class Car:
         self.travelled_distance = 0
 
 
+# Creating my car
 my_car = Car("ABC-123", 142)
 
+# Printing the properties of my car
 print("The properties of my car:\n")
 print(f"Registration number: {my_car.registration_number}")
 print(f"Max speed: {my_car.max_speed} km/h")

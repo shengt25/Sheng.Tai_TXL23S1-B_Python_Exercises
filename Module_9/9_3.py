@@ -16,16 +16,24 @@ class Car:
         self.travelled_distance += self.current_speed * hours
 
 
+# Creating my car
 my_car = Car("ABC-123", 142)
+
+# Setting init travel distance to 2000 km
 my_car.travelled_distance = 2000
+
+# Printing the properties of my car
 print("The properties of my car:")
 print(f"Registration number: {my_car.registration_number}")
 print(f"Max speed: {my_car.max_speed} km/h")
 print(f"Current speed: {my_car.current_speed} km/h")
 print(f"Travelled distance: {my_car.travelled_distance} km")
 
+# Driving the car
 print("\n")
 my_car.current_speed = 60
 my_car.drive(1.5)
-print(f"Travelling with {my_car.current_speed} km/h for 1.5 hours")
+
+# Print the results
+print(f"Travelled with {my_car.current_speed} km/h for 1.5 hours")
 print(f"Travelled distance: {my_car.travelled_distance} km")
