@@ -18,7 +18,14 @@ class Car:
 
 my_car = Car("ABC-123", 142)
 my_car.travelled_distance = 2000
+print("The properties of my car:")
+print(f"Registration number: {my_car.registration_number}")
+print(f"Max speed: {my_car.max_speed} km/h")
+print(f"Current speed: {my_car.current_speed} km/h")
+print(f"Travelled distance: {my_car.travelled_distance} km")
+
+print("\n")
 my_car.current_speed = 60
 my_car.drive(1.5)
-
+print(f"Travelling with {my_car.current_speed} km/h for 1.5 hours")
 print(f"Travelled distance: {my_car.travelled_distance} km")

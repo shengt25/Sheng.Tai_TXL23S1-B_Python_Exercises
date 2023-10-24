@@ -14,7 +14,13 @@ class Car:
 
 
 my_car = Car("ABC-123", 142)
-
+print("The properties of my car:")
+print(f"Registration number: {my_car.registration_number}")
+print(f"Max speed: {my_car.max_speed} km/h")
+print(f"Current speed: {my_car.current_speed} km/h")
+print(f"Travelled distance: {my_car.travelled_distance} km")
+print("\n")
+print("Accelerating the car:")
 my_car.accelerate(30)
 my_car.accelerate(70)
 my_car.accelerate(50)
