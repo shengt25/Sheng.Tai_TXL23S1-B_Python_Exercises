@@ -2,6 +2,7 @@ from flask import Flask
 import json
 import mysql.connector
 
+# init mysql connection
 connection = mysql.connector.connect(
     host='127.0.0.1',
     port=3306,
@@ -9,8 +10,8 @@ connection = mysql.connector.connect(
     user='root',
     password='metro',
     autocommit=True)
-
 cursor = connection.cursor()
+
 app = Flask(__name__)
 
 
@@ -22,6 +23,7 @@ def route_get_info_by_icao(icao):
     try:
         name, location = cursor.fetchall()[0]
     except:
+        # If empty/error data, message ICAO code is invalid, return 400
         result = {"ICAO": icao, "message": "Invalid ICAO code."}
         return json.dumps(result), 400
     else:
