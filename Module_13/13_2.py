@@ -1,5 +1,4 @@
-from flask import Flask
-import json
+from flask import Flask, make_response
 import mysql.connector
 
 # init mysql connection
@@ -25,11 +24,12 @@ def route_get_info_by_icao(icao):
     except:
         # If empty/error data, message ICAO code is invalid, return 400
         result = {"ICAO": icao, "message": "Invalid ICAO code."}
-        return json.dumps(result), 400
+        return make_response(result, 400)
     else:
         result = {"ICAO": icao, "Name": name, "Location": location}
-        return json.dumps(result)
+        return make_response(result)
 
+# NOTE: try with EFHK for ICAO if you don't remember any.
 
 if __name__ == '__main__':
     app.run(debug=False)

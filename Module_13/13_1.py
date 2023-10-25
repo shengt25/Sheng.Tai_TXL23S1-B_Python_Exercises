@@ -1,5 +1,4 @@
-from flask import Flask
-import json
+from flask import Flask, make_response
 
 # Setting constants for the is_prime function
 INVALID_INPUT = -2
@@ -40,19 +39,19 @@ def route_is_prime(num):
     result = is_prime(num)
     if result == INVALID_INPUT:
         result = {"Number": num, "message": "Invalid input, it needs to be an integer."}
-        return json.dumps(result), 400
+        return make_response(result, 400)
     elif result == INVALID_NUM:
         result = {"Number": num, "message": "Invalid number, it needs to be greater than 0."}
-        return json.dumps(result), 400
+        return make_response(result, 400)
     elif result == PRIME:
         result = {"Number": num, "isPrime": True}
-        return json.dumps(result)
+        return make_response(result)
     elif result == NOT_PRIME:
         result = {"Number": num, "isPrime": False}
-        return json.dumps(result)
+        return make_response(result)
     else:
         result = {"Number": num, "message": "Something went wrong."}
-        return json.dumps(result), 500
+        return make_response(result, 500)
 
 
 if __name__ == '__main__':
