@@ -8,27 +8,28 @@ class Elevator:
         self.current_floor += 1
         if self.current_floor > self.top_floor:
             self.current_floor = self.top_floor
-        print(f"Current floor: {self.current_floor}")
         return self.current_floor
 
     def floor_down(self):
         self.current_floor -= 1
         if self.current_floor < self.bottom_floor:
             self.current_floor = self.bottom_floor
-        print(f"Current floor: {self.current_floor}")
         return self.current_floor
 
     def go_to_floor(self, floor):
         if floor > self.top_floor or floor < self.bottom_floor:
             print("Invalid floor")
-            return
+            return -1
 
+        print(f"Current floor: {self.current_floor}")
         while self.current_floor != floor:
             if self.current_floor < floor:
                 self.floor_up()
             else:
                 self.floor_down()
-        print(f"Ding! {self.current_floor} arrived.")
+            print(f"Current floor: {self.current_floor}")
+
+        print(f"Ding! Floor {self.current_floor} arrived.")
         return self.current_floor
 
 
@@ -40,8 +41,13 @@ class Building:
         self.elevators = [Elevator(bottom_floor, top_floor) for _ in range(number_of_elevators)]
 
     def run_elevator(self, elevator_number, floor):
-        print(f"Running elevator {elevator_number} to floor {floor}")
+        if elevator_number >= self.number_of_elevators:
+            print(f"Elevator number {elevator_number} is invalid, it's between 0 and {self.number_of_elevators - 1}")
+            return -1
+        print(
+            f"Running elevator no.{elevator_number}, from floor {self.elevators[elevator_number].current_floor} to {floor}")
         self.elevators[elevator_number].go_to_floor(floor)
+        print("\n")
         return self.elevators[elevator_number].current_floor
 
     def fire_alarm(self):
@@ -50,14 +56,15 @@ class Building:
             self.run_elevator(i, self.bottom_floor)
 
 
-# Creating a 7 floors building with 5 elevators (0 to 4)
+# Creating a 7 floors building with 5 elevators (from no.0 to no.4)
 b = Building(1, 7, 5)
 
-# Running the elevators 0, 2 and 4
+# Testing elevators
+# Running the elevators no.0, no.2 and no.4 to floor 7, 3 and 6
 b.run_elevator(0, 7)
 b.run_elevator(2, 3)
 b.run_elevator(4, 6)
 
 # Testing fire alarm
-print("\nTesting fire alarm!")
+print("Testing fire alarm!\n")
 b.fire_alarm()
