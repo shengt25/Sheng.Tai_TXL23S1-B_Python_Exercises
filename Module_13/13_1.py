@@ -9,7 +9,7 @@ NOT_PRIME = 0
 app = Flask(__name__)
 
 
-# Function is prime
+# Function to determine prime number
 def is_prime(num):
     prime_flag = True
     try:
