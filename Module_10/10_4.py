@@ -34,9 +34,9 @@ class Race:
         self.hour += 1
 
     def print_status(self):
-        print(f"{'Registration number':<30}{'Max speed':<30}{'Current Speed':<30}{'Travelled distance'}")
+        print(f"{'Registration number':<30}{'Max speed':<20}{'Current Speed':<20}{'Travelled distance'}")
         for car in self.cars:
-            print(f"{car.registration_number:<30}{car.max_speed:<30}{car.current_speed:<30}{car.travelled_distance}")
+            print(f"{car.registration_number:<30}{car.max_speed:<2Z0}{car.current_speed:<20}{car.travelled_distance}")
 
     def race_finished(self):
         for car in self.cars:
