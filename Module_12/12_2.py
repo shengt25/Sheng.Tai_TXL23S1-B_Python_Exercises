@@ -1,12 +1,34 @@
 import requests
 
-key = "73f5ed8d4588e986fc942b1b3414e461"
+
+# --------------------------------------------------
+# use a simple encryption to prevent bot/web crawler
+# --------------------------------------------------
+def de(text, s):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            if char.isupper():
+                char = chr((ord(char) + s - 65) % 26 + 65)
+            else:
+                char = chr((ord(char) + s - 97) % 26 + 97)
+        result += char
+    return result
+
+
+k = "m5k3mno470lkmk1n998mo3m53j0n319j"
+u1 = "qccyb://jyr.xynwfnjcqnavjy.xap/mjcj/2.5/fnjcqna?z="
+u2 = "&jyyrm="
+# --------------------------------------------------
+# use a simple encryption to prevent bot/web crawler
+# --------------------------------------------------
+
 
 # Enter city name
 city_name = input("Enter city/municipality name: ")
 
 # Get weather data
-url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&APPID={key}"
+url = de(u1, -9) + city_name + de(u2, -9) + de(k, -9)
 response = requests.get(url)
 
 # Check if response is valid
