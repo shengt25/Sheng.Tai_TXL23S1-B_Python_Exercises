@@ -17,8 +17,8 @@ app = Flask(__name__)
 # Route for get_info_by_icao
 @app.route("/<icao>")
 def route_get_info_by_icao(icao):
-    sql_cmd = f"select name, municipality from airport where ident = '{icao}'"
-    cursor.execute(sql_cmd)
+    sql_cmd = "select name, municipality from airport where ident = %s"
+    cursor.execute(sql_cmd, (icao,))
     try:
         name, location = cursor.fetchall()[0]
     except:
@@ -28,6 +28,7 @@ def route_get_info_by_icao(icao):
     else:
         result = {"ICAO": icao, "Name": name, "Location": location}
         return make_response(result)
+
 
 # NOTE: try with EFHK for ICAO if you don't remember any.
 
