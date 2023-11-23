@@ -11,7 +11,6 @@ app = Flask(__name__)
 
 # Function to determine prime number
 def is_prime(num):
-    prime_flag = True
     try:
         num = int(num)
     except:
@@ -22,37 +21,32 @@ def is_prime(num):
     elif num == 1:
         return NOT_PRIME
     else:
-        for i in range(2, num - 1):
+        for i in range(2, round(num / 2) + 1):
             if num % i == 0:
-                prime_flag = False
-                break
-
-        if prime_flag:
-            return PRIME
-        else:
-            return NOT_PRIME
+                return NOT_PRIME
+        return PRIME
 
 
-# Route for is prime
+# Route for is_prime
 @app.route("/<num>")
 def route_is_prime(num):
     result = is_prime(num)
     if result == INVALID_INPUT:
-        result = {"Number": num, "message": "Invalid input, it needs to be an integer."}
-        return make_response(result, 400)
+        response = {"Number": num, "message": "Invalid input, it needs to be an integer."}
+        return make_response(response, 400)
     elif result == INVALID_NUM:
-        result = {"Number": num, "message": "Invalid number, it needs to be greater than 0."}
-        return make_response(result, 400)
+        response = {"Number": num, "message": "Invalid number, it needs to be greater than 0."}
+        return make_response(response, 400)
     elif result == PRIME:
-        result = {"Number": num, "isPrime": True}
-        return make_response(result)
+        response = {"Number": num, "isPrime": True}
+        return make_response(response)
     elif result == NOT_PRIME:
-        result = {"Number": num, "isPrime": False}
-        return make_response(result)
+        response = {"Number": num, "isPrime": False}
+        return make_response(response)
     else:
-        result = {"Number": num, "message": "Something went wrong."}
-        return make_response(result, 500)
+        response = {"Number": num, "message": "Something went wrong."}
+        return make_response(response, 500)
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False, host="127.0.0.1", port=5000)
